@@ -11,8 +11,10 @@ module.exports.get = async(req, res) => {
 
 module.exports.getJson = async(req, res) => {
   fs.readFile('./output.json', 'utf8', function (err, data) {
-    if (err) res.send({message: 'No data'})
-    res.send(data);
+    if (err) {
+      return res.send({message: 'No data'})
+    }
+    return res.send(data);
   });
 };
 

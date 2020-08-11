@@ -7,11 +7,18 @@ import { ApiService } from '../api.service';
   styleUrls: ['./faq.component.scss']
 })
 export class FaqComponent implements OnInit {
+	faq = [];
+	time = '';
+	data = false;
 
-  constructor(private apiService: ApiService) { }
+	constructor(private apiService: ApiService) { }
+
 	ngOnInit() {
-		this.apiService.getJson().subscribe((data: any[]) => {  
-			console.log(data); 
+		this.apiService.getJson().subscribe((data: any[]) => {
+			// This could be improved by defining interfaces
+			this.faq = data["result"];
+			this.time = data["updated"];
+			this.data = this.faq !== undefined;
 		});
 	}
 }

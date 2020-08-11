@@ -1,1 +1,16 @@
-<p>faq works!</p>
+<div *ngIf="data">
+  <p>Last Update: {{time}}</p>
+  <div class="container">
+    <ul>
+      <li *ngFor="let question of faq">
+        {{ question["index"] }}
+        <ul>
+          <li> {{ question["value"]}}</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</div>
+<div class="container">
+  <h2 *ngIf="!data"> No data available </h2>
+</div>

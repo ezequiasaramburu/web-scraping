@@ -6,7 +6,14 @@ let content = {};
 
 module.exports.get = async(req, res) => {
   cheerioExample();
-  return res.send('it works');
+  return res.status(200).json({message: 'OK'});
+};
+
+module.exports.getJson = async(req, res) => {
+  fs.readFile('./output.json', 'utf8', function (err, data) {
+    if (err) throw err;
+    res.send(data);
+  });
 };
 
 async function cheerioExample() {
